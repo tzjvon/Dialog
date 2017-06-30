@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Dialog</title>
+	<style>
+		* {margin: 0;padding: 0;}
+		.alert,
+		.confirm {
+			width: 120px;
+			height: 90px;
+			background: lightblue;
+			font-size: 16px;
+			color: #fff;
+			outline: 0;
+		}
+	</style>
+</head>
+<body>
+	<div style="text-align: center;padding-top: 50px;">
+		<div>
+			<button class="alert"> alert </button>
+			<button class="confirm"> confirm </button>
+		</div>
+		<div></div>
+	</div>
+
+	<script src='../dist/Dialog.js'></script>
+	<script>
+		var alertDOM = document.getElementsByClassName('alert')[0],
+			confirmDOM = document.getElementsByClassName('confirm')[0];
+
+		function addEvent(el, type, fn, bubble) {
+			el.addEventListener(type, fn, bubble);
+		}
+
+		addEvent(alertDOM,'click', function () {
+			Dialog.alert('hello Dialog');
+		});
+
+		addEvent(confirmDOM,'click', function () {
+			Dialog.confirm('hello Dialog', {
+				'yes': function () {
+					alert('click at 确定')
+				},
+				'no': function () {
+					alert('click at 取消')
+				}
+			})
+		});
+
+	</script>
+</body>
+</html>
